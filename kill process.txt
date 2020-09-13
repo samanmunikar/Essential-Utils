@@ -1,0 +1,17 @@
+Task Kill
+
+1. Free Port and process
+
+	In windows:
+
+	netstat -ano | findstr :<port-num>
+	taskkill \F \PID <processId>
+	
+	In Linux:
+	
+	netstat -tulnap | grep LISTEN
+	puser -k <port-num>/tcp
+	
+	ps -aux | grep <processname>
+	kill -9 <processId>
+	

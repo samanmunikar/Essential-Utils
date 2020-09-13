@@ -1,0 +1,28 @@
+Creating a shared folder in Virtual Box:
+
+1. Create a shared folder in Windows.
+2. Go to Device > Shared Folders > Shared Folder Settings in virtual box toolbar
+3. Go to Machine Folders and click Add folder at rightmost corner.
+4. Give Windows FOlder path in folder path and give <foldername> folder name.
+	Click Auto-mount and Make Permanent.
+5. Click OK 
+
+6. Go to cloudera vm and create a folder where you want to mount
+7. Open terminal with super user (su) privilege
+
+8. Mount using command:
+
+	mount -t vboxsf <foldername> <cloudera vm folder path>
+	
+9. to unmount the folder
+
+	umount <cloudera vm folder path>
+	
+10. To give access to cloudera user. open gedit /etc/group
+
+	add cloudera after vboxsf:x:474:
+	
+	it should look like 
+	vboxsf:x:474:cloudera
+	
+11. Save and Enjoy

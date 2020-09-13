@@ -1,0 +1,72 @@
+Install Postgresql in Centos6
+
+Steps:
+# install postgres server and mongodb
+sudo yum install -y postgresql-server postgresql-jdbc
+
+# create initial database
+sudo service postgresql initdb
+
+# start postgres server during boot
+sudo chkconfig --level 345 postgresql on
+
+# start postgres server
+sudo service postgresql start
+
+# create postgres account for cloudera user
+sudo -u postgres psql -c "CREATE USER cloudera"
+
+# make cloudera account admin
+sudo -u postgres psql -c "ALTER USER cloudera with superuser"
+
+# create default db for cloudera account
+sudo -u postgres createdb cloudera
+
+#run
+psql
+
+Alternatively,
+
+Steps:
+
+# Create a repo file for postgresql
+sudo vi /etc/yum.repos.d/pgdg-90.repo
+
+# Paster following content in it
+[pgdg90]
+name=PostgreSQL 9.0 RPMs for RHEL/CentOS 6
+baseurl=https://yum-archive.postgresql.org/9.0/redhat/rhel-6-x86_64
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+
+# install
+yum install postgresql90-server
+
+Alternatively,
+
+Steps:
+
+1. Exclude CentOS Postgres Packages
+	- vi /etc/yum.repos.d/CentOS-Base.repo
+	[base]
+		exclude=postgresql*
+		
+	[updates]
+		exclude=postgresql*
+		
+2. Add Postgres Repo
+	- Open postgres repo site
+		https://yum.postgresql.org/repopackages/
+	- Choose the package and copy link 
+	- curl -O <paste link>
+	- rpm -ivh pgdg*
+	- yum list postgresql*
+	- yum install postgresql95-server
+	
+3. Initialize database
+	- serviece postgresql-9.5 initdb
+	
+4. Setting postgresql to start at boot
+	- chkconfig postgresql-9.5 on
+	- service postgresql-9.5 start

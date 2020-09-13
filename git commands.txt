@@ -1,0 +1,12 @@
+git restore filename:  to restore file to previous version. To discard changes made in working tree.
+git checkout:  to go to previous commits.
+git switch: to change branch
+git stash: to temporarily save the changes in stack
+git stash pop
+git reset --soft HEAD:  to uncommit but keep the changes in staging area
+git reset --mixed HEAD:  to uncommit but to keep the changes in working area
+git reset --hard HEAD: to uncommit and to discard all the changes done from HEAD. Go to HEAD commit.
+git revert <hash>: go to specific commit and create a fresh commit containing only the changes available at that commit.
+git fetch origin <branch>: to fetch the branch in local from remote
+git clean : to remove untracked files in working tree
+git rm : to remove a file from the working tree along with tracking index assosciated with it.
