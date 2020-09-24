@@ -10,7 +10,7 @@ Task Kill
 	In Linux:
 	
 	netstat -tulnap | grep LISTEN
-	puser -k <port-num>/tcp
+	fuser -k <port-num>/tcp
 	
 	ps -aux | grep <processname>
 	kill -9 <processId>
